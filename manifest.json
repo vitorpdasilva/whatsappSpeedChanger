@@ -1,10 +1,10 @@
 {
     "manifest_version": 2,
     "name": "whatsAppSpeedChanger",
-    "version": "0.0.1",
+    "version": 0.1,
     "content_scripts": [
         {
-            "matches": ["https://web.whatsapp.com"],
+            "matches": ["https://web.whatsapp.com/"],
             "css": ["style.css"],
             "js": ["content.js"]
         }
