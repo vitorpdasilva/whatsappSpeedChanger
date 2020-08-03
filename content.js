@@ -14,23 +14,27 @@ const getHeader = setInterval(() => {
             select.add(option);
         })
         header.appendChild(select);
-        
         select.addEventListener("change", playbackRateOption => {
-            const audios = document.querySelectorAll("audio");
             playbackRate = playbackRateOption.target.value;
+            setPlaybackRate();
             savePlaybackRateOnLocalStorage();
-            audios.forEach(audio => {
-                audio.playbackRate = playbackRate;
-            })
+            
         });
     };
 }, 1000);
 
+const setPlaybackRate = () => {
+    const audios = document.querySelectorAll("audio");
+    audios.forEach(audio => {
+        audio.playbackRate = playbackRate;
+    })
+}
+
 const savePlaybackRateOnLocalStorage = () => {
-    console.log('playbackRate', playbackRate);
     window.localStorage.setItem('playbackRate', playbackRate);
 }
 
-const checkLocalStorage = setInterval(() => {
+const interval = setInterval(() => {
+    setPlaybackRate();
     savePlaybackRateOnLocalStorage();
 }, 5000);
